@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Layout } from '../components/Layout';
-import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
+import { Layout } from '../Layout';
+import { supabase } from '../../../lib/supabase';
+import { useAuth } from '../../../contexts/AuthContext';
 import {
   ShoppingBag,
   FileText,
