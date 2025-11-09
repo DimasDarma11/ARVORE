@@ -1,5 +1,5 @@
-import HeroArvore from "./components/HeroArvore";
-import { BrandCard } from "./components/BrandCard";
+import HeroArvore from "./HeroArvore";
+import { BrandCard } from "./BrandCard";
 
 const brands = [
   { name: "ArvoTech", desc: "Solusi teknologi dan inovasi digital.", path: "/arvotech" },
@@ -20,3 +20,4 @@ export default function Arvore() {
     </main>
   );
 }
+
