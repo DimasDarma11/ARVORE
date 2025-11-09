@@ -22,7 +22,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['lucide-react', 'framer-motion', 'react', 'react-dom'],
+    include: ['lucide-react', 'framer-motion', 'react', 'react-dom', 'class-variance-authority'],
   },
 
   resolve: {
