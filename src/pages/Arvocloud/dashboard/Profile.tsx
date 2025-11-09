@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Layout } from '../components/Layout';
-import { useAuth } from '../contexts/AuthContext';
-import { supabase } from '../lib/supabase';
+import { Layout } from '../Layout';
+import { useAuth } from '../../../contexts/AuthContext';
+import { supabase } from '../../../lib/supabase';
 import { User, Phone, Mail, Save } from 'lucide-react';
 
 export function Profile() {
