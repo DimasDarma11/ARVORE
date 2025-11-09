@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Arvore from './pages/Arvore';
 import DashboardApp from './pages/DashboardApp';
-import { VerifyEmail } from './pages/VerifyEmail';
+import { VerifyEmail } from './pages/Arvocloud/dashboard/VerifyEmail';
 
 function App() {
   return (
