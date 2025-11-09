@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 import { Cloud } from "lucide-react";
 
 const LoginPage2: React.FC = () => {
