@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Layout } from '../components/Layout';
-import { supabase } from '../lib/supabase';
+import { Layout } from '../Layout';
+import { supabase } from '../../../lib/supabase';
 import { FileText, CreditCard, CheckCircle, Copy, Check, X } from 'lucide-react';
 
 interface Invoice {
