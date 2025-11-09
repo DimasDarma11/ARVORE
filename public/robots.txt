@@ -1,0 +1,24 @@
+# ==============================
+# 🤖 ARVOCLOUD Robots.txt
+# ==============================
+
+User-agent: *
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /checkout/
+Disallow: /order/
+Disallow: /api/
+Disallow: /supabase/
+Allow: /
+
+# ✅ Allow essential assets for rendering
+Allow: /assets/
+Allow: /images/
+Allow: /fonts/
+
+# 🧠 Sitemap for search engines
+Sitemap: https://arvocloud.web.id/sitemap.xml
+
+# ==============================
+# Last updated: 2025-10-21
+# ==============================

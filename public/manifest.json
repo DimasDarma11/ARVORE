@@ -1,0 +1,10 @@
+{
+  "name": "ARVOCLOUD — VPS & RDP Premium",
+  "short_name": "ARVOCLOUD",
+  "description": "Penyedia VPS, RDP, dan Bare Metal Server premium dengan performa tinggi dan uptime 99.9%.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary"
+}

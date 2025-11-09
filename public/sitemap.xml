@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 🏠 Halaman Utama -->
+  <url>
+    <loc>https://arvocloud.web.id/</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 💼 Halaman Produk / Layanan -->
+  <url>
+    <loc>https://arvocloud.web.id/#services</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 📦 Halaman Order -->
+  <url>
+    <loc>https://arvocloud.web.id/order</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 💳 Halaman Pembayaran -->
+  <url>
+    <loc>https://arvocloud.web.id/app/checkout</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 👤 Login & Signup -->
+  <url>
+    <loc>https://arvocloud.web.id/app/login</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://arvocloud.web.id/app/signup</loc>
+    <lastmod>2025-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- 🚫 Dashboard & Admin tidak disertakan di sitemap -->
+</urlset>
