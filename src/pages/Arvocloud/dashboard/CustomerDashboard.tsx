@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Layout } from '../components/Layout';
-import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
+import { Layout } from '../Layout';
+import { supabase } from '../../../lib/supabase';
+import { useAuth } from '../../../contexts/AuthContext';
 import { Server, Clock, CheckCircle, AlertCircle, XCircle, Eye, X, RefreshCcw } from 'lucide-react';
 
 interface Order {
