@@ -36,8 +36,8 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
     alias: {
-      // Pastikan Vite mengetahui lokasi modul class-variance-authority
-      'class-variance-authority': require.resolve('class-variance-authority'),
+      // Ubah dari require.resolve ke import.meta.resolve untuk mendukung ESM
+      'class-variance-authority': import.meta.resolve('class-variance-authority'),
     },
   },
 
