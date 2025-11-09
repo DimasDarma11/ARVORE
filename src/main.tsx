@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 
 import App from './App';
-import ArvoCloud from './pages/Arvocloud';
+import Arvocloud from './pages/Arvocloud';
 import ArvoTech from './pages/ArvoTech';
 import ArvoAgro from './pages/ArvoAgro';
 import ArvoVisual from './pages/ArvoVisual';
@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<App />} />
-        <Route path="/arvocloud/*" element={<ArvoCloud />} />
+        <Route path="/arvocloud/*" element={<Arvocloud />} />
         <Route path="/arvotech" element={<ArvoTech />} />
         <Route path="/arvoagro" element={<ArvoAgro />} />
         <Route path="/arvovisual" element={<ArvoVisual />} />
