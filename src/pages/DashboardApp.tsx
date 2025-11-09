@@ -1,14 +1,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from '../contexts/AuthContext';
-import { ProtectedRoute } from '../components/ProtectedRoute';
-import { Login } from './Login';
-import { Signup } from './Signup';
-import { CustomerDashboard } from './CustomerDashboard';
-import { OrderServer } from './OrderServer';
-import { Checkout } from './Checkout';
-import { Invoices } from './Invoices';
-import { Admin } from './Admin';
-import { Profile } from './Profile';
+import { ProtectedRoute } from './Arvocloud/ProtectedRoute';
+import { Login } from './Arvocloud/dashboard/Login';
+import { Signup } from './Arvocloud/dashboard/Signup';
+import { CustomerDashboard } from './Arvocloud/dashboard/CustomerDashboard';
+import { OrderServer } from './Arvocloud/dashboard/OrderServer';
+import { Checkout } from './Arvocloud/dashboard/Checkout';
+import { Invoices } from './Arvocloud/dashboard/Invoices';
+import { Admin } from './Arvocloud/dashboard/Admin';
+import { Profile } from './Arvocloud/dashboard/Profile';
 
 function DashboardApp() {
   return (
