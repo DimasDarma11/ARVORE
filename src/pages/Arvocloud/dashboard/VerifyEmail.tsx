@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../../lib/supabase';
 import { CheckCircle, Loader2, XCircle } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
