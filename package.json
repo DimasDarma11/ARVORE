@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install class-variance-authority@0.7.1 && vite build",
+    "build": "npm install class-variance-authority@0.7.1 && ls -la node_modules/class-variance-authority && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
