@@ -22,7 +22,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/arvovisual" element={<ArvoVisual />} />
         <Route path="/loginpage" element={<LoginPage />} />
         <Route path="/rules" element={<Rules />} />
-        <Route path="/status" element={<Status />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
