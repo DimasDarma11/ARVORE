@@ -3,7 +3,7 @@ import { ArrowRight, Play, Activity, ShieldCheck, Zap, Globe, MessageCircle } fr
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import NoticeModal from "./NoticeModal";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 
 // ============ BUTTON COMPONENT ============
 const buttonVariants = cva(
