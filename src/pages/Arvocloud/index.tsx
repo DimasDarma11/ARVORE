@@ -6,6 +6,7 @@ import Pricing from './Pricing';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
+import { Helmet } from "react-helmet";
 
 // Lazy-load komponen berat
 const About = lazy(() => import('./About'));
