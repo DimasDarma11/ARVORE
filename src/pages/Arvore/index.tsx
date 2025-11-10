@@ -46,10 +46,10 @@ export default function HeroArvore() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, type: "spring" }}
       >
-        <h1 className="text-7xl md:text-8xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-sky-600 to-amber-600">
+        <h1 className="text-7xl md:text-8xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-sky-600">
           ARVORE
         </h1>
-        <div className="h-2 w-32 mx-auto bg-gradient-to-r from-emerald-500 via-sky-500 to-amber-500 rounded-full"></div>
+        <div className="h-2 w-32 mx-auto bg-gradient-to-r from-sky-500 to-sky-500 rounded-full"></div>
       </motion.div>
 
       {/* Hero Description */}
@@ -99,7 +99,7 @@ export default function HeroArvore() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.8 }}
       >
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-emerald-200 text-center">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
           <div className="text-4xl font-black text-emerald-600 mb-2">4</div>
           <div className="text-sm text-slate-600 font-medium">Sub-Brand</div>
         </div>
@@ -107,11 +107,11 @@ export default function HeroArvore() {
           <div className="text-4xl font-black text-sky-600 mb-2">50+</div>
           <div className="text-sm text-slate-600 font-medium">Proyek Selesai</div>
         </div>
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-amber-200 text-center">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
           <div className="text-4xl font-black text-amber-600 mb-2">50+</div>
           <div className="text-sm text-slate-600 font-medium">Klien Puas</div>
         </div>
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-rose-200 text-center">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
           <div className="text-4xl font-black text-rose-600 mb-2">24/7</div>
           <div className="text-sm text-slate-600 font-medium">Support</div>
         </div>
@@ -142,13 +142,8 @@ export default function HeroArvore() {
           </svg>
           <span className="text-sm font-medium">Cepat & Efisien</span>
         </div>
-        <div className="flex items-center gap-2 text-slate-600">
-          <svg className="w-5 h-5 text-rose-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-          </svg>
-          <span className="text-sm font-medium">Customer First</span>
-        </div>
       </motion.div>
     </section>
   );
 }
+
