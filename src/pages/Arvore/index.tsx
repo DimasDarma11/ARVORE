@@ -11,7 +11,7 @@ type BrandCardProps = {
 const BrandCard = ({ name, desc, path }: BrandCardProps) => (
   <a
     href={path}
-    className="group relative bg-white hover:bg-gradient-to-br hover:from-white hover:to-emerald-50 transition-all duration-300 rounded-3xl shadow-xl hover:shadow-2xl p-8 border-2 border-emerald-100 hover:border-emerald-300 overflow-hidden block"
+    className="group relative bg-white hover:bg-gradient-to-br hover:from-white hover:to-emerald-50 transition-all duration-300 rounded-3xl shadow-xl hover:shadow-2xl p-8 border-2 border-sky-100 hover:border-sky-300 overflow-hidden block"
   >
     {/* Accent Corner */}
     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200 to-transparent opacity-50 rounded-bl-full transform group-hover:scale-150 transition-transform duration-500"></div>
@@ -35,7 +35,7 @@ export default function HeroArvore() {
     <>
       {/* Helmet untuk mengubah title halaman */}
       <Helmet>
-        <title>ARVORE - Ekosistem Inovatif</title>
+        <title>ARVORE - Solusi Digital Terintegrasi untuk Masa Depan</title>
       </Helmet>
 
       {/* Hero Section */}
@@ -67,7 +67,7 @@ export default function HeroArvore() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Ekosistem brand inovatif yang membangun masa depan digital, teknologi, dan kreativitas.
+          Menghadirkan solusi digital yang terintegrasi untuk memenuhi kebutuhan teknologi dan kreativitas masa depan.
           <span className="block mt-3 text-lg text-slate-600">Pilih sub-brand di bawah untuk mengenal lebih jauh.</span>
         </motion.p>
 
@@ -155,3 +155,4 @@ export default function HeroArvore() {
     </>
   );
 }
+
