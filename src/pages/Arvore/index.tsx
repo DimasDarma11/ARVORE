@@ -87,7 +87,7 @@ export default function HeroArvore() {
         />
         <BrandCard
           name="ArvoVisual"
-          desc="Layanan desain grafis dan branding profesional, termasuk desain logo, visual marketing, dan AutoCAD.""
+          desc="Layanan desain grafis dan branding profesional, termasuk desain logo, visual marketing, dan AutoCAD."
           path="/arvovisual"
         />
       </motion.div>
@@ -146,5 +146,6 @@ export default function HeroArvore() {
     </section>
   );
 }
+
 
 
