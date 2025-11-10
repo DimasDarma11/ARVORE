@@ -4,7 +4,7 @@ export default function ArvoVisual() {
   return (
     <>
       <Helmet>
-        <title>ArvoTech - Coming Soon</title>
+        <title>ArvoVisual - Jasa Desain Grafis dan Visual</title>
       </Helmet>
       <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
         <h1 className="text-4xl font-bold">Coming Soon!</h1>
@@ -12,4 +12,5 @@ export default function ArvoVisual() {
     </>
   );
 }
+
 
