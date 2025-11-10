@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 
-export default function ArvoTech() {
+export default function ArvoVisual() {
   return (
     <>
       <Helmet>
@@ -12,3 +12,4 @@ export default function ArvoTech() {
     </>
   );
 }
+
