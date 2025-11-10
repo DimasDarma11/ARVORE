@@ -22,38 +22,7 @@ export default function HeroArvore() {
         Ekosistem brand inovatif yang membangun masa depan digital, teknologi, dan kreativitas.  
         Pilih sub-brand di bawah untuk mengenal lebih jauh.
       </motion.p>
-
-      <motion.div
-        className="flex flex-wrap justify-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <Link
-          to="/arvocloud"
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 transition-transform duration-200 font-medium"
-        >
-          ArvoCloud
-        </Link>
-        <Link
-          to="/arvotech"
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 hover:scale-105 transition-transform duration-200 font-medium"
-        >
-          ArvoTech
-        </Link>
-        <Link
-          to="/arvoagro"
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-lime-600 hover:scale-105 transition-transform duration-200 font-medium"
-        >
-          ArvoAgro
-        </Link>
-        <Link
-          to="/arvovisual"
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-600 hover:scale-105 transition-transform duration-200 font-medium"
-        >
-          ArvoVisual
-        </Link>
-      </motion.div>
     </section>
   );
 }
+
