@@ -72,22 +72,22 @@ export default function HeroArvore() {
       >
         <BrandCard
           name="ArvoCloud"
-          desc="Solusi cloud yang scalable dan handal untuk infrastruktur digital Anda."
+          desc="Solusi hosting dengan VPS, RDP, dan Baremetal berkualitas tinggi untuk performa maksimal dan uptime 99.8%."
           path="/arvocloud"
         />
         <BrandCard
           name="ArvoTech"
-          desc="Membangun dan mengembangkan teknologi inovatif untuk masa depan digital."
+          desc="Pengembangan bot, website, dan aplikasi custom yang dirancang untuk memenuhi kebutuhan teknologi bisnis Anda."
           path="/arvotech"
         />
         <BrandCard
           name="ArvoAgro"
-          desc="Transformasi digital untuk industri pertanian dengan teknologi terkini."
+          desc="Distributor kelapa antar pulau dengan pengiriman cepat dan produk berkualitas tinggi untuk keperluan industri."
           path="/arvoagro"
         />
         <BrandCard
           name="ArvoVisual"
-          desc="Solusi visual kreatif untuk branding dan pemasaran digital."
+          desc="Layanan desain grafis dan branding profesional, termasuk desain logo, visual marketing, dan AutoCAD.""
           path="/arvovisual"
         />
       </motion.div>
@@ -100,7 +100,7 @@ export default function HeroArvore() {
         transition={{ delay: 0.7, duration: 0.8 }}
       >
         <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-          <div className="text-4xl font-black text-emerald-600 mb-2">4</div>
+          <div className="text-4xl font-black text-sky-600 mb-2">4</div>
           <div className="text-sm text-slate-600 font-medium">Sub-Brand</div>
         </div>
         <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
@@ -108,11 +108,11 @@ export default function HeroArvore() {
           <div className="text-sm text-slate-600 font-medium">Proyek Selesai</div>
         </div>
         <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-          <div className="text-4xl font-black text-amber-600 mb-2">50+</div>
+          <div className="text-4xl font-black text-sky-600 mb-2">50+</div>
           <div className="text-sm text-slate-600 font-medium">Klien Puas</div>
         </div>
         <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-          <div className="text-4xl font-black text-rose-600 mb-2">24/7</div>
+          <div className="text-4xl font-black text-sky-600 mb-2">24/7</div>
           <div className="text-sm text-slate-600 font-medium">Support</div>
         </div>
       </motion.div>
@@ -146,4 +146,5 @@ export default function HeroArvore() {
     </section>
   );
 }
+
 
