@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 // BrandCard Component
 type BrandCardProps = {
@@ -31,6 +32,9 @@ const BrandCard = ({ name, desc, path }: BrandCardProps) => (
 
 export default function HeroArvore() {
   return (
+    <Helmet>
+      <title>ARVORE - Ekosistem Inovatif</title>
+    </Helmet>
     <section className="flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50 min-h-screen relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -146,6 +150,7 @@ export default function HeroArvore() {
     </section>
   );
 }
+
 
 
 
