@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Info } from "lucide-react";
 import { Slot } from "@radix-ui/react-slot";
-import cva, { type VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
