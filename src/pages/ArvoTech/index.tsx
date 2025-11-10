@@ -1,7 +1,14 @@
+import { Helmet } from "react-helmet";
+
 export default function ArvoTech() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-      <h1 className="text-4xl font-bold">ArvoTech</h1>
-    </main>
+    <>
+      <Helmet>
+        <title>ArvoTech - Coming Soon</title>
+      </Helmet>
+      <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+        <h1 className="text-4xl font-bold">Coming Soon!</h1>
+      </main>
+    </>
   );
 }
