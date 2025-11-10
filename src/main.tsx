@@ -8,7 +8,7 @@ import Arvocloud from './pages/Arvocloud';
 import ArvoTech from './pages/ArvoTech';
 import ArvoAgro from './pages/ArvoAgro';
 import ArvoVisual from './pages/ArvoVisual';
-import LoginPage from './pages/Arvocloud/dashboard/LoginPage';
+import LoginPage from './pages/Arvocloud/LoginPage';
 import Rules from './pages/Arvocloud/Rules';
 
 createRoot(document.getElementById('root')!).render(
