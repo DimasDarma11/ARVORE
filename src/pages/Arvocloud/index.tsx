@@ -17,6 +17,9 @@ export default function Arvocloud() {
 
   return (
     <div className="min-h-screen relative">
+      <Helmet>
+        <title>ARVOCLOUD - VPS & RDP SOLUTIONS</title>
+      </Helmet>
       <Header
         onAboutClick={() => setShowAbout(true)}
         onContactClick={() => setShowContact(true)}
