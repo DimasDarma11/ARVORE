@@ -283,7 +283,7 @@ const Pricing = () => {
                 </div>
                 
                 <div className="text-card-foreground text-xs sm:text-sm space-y-2 mb-8">
-                  {Object.entries(plan.specs).slice(0, 4).map(([k, v]: [string, string]) => (
+                  {Object.entries(plan.specs).map(([k, v]: [string, string]) => (
                     <div key={k} className="flex justify-between items-start gap-2">
                       <span className="capitalize text-muted-foreground">{k}:</span>
                       <span className="font-medium text-right">{v}</span>
