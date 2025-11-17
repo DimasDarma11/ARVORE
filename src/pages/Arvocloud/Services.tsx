@@ -94,7 +94,7 @@ const Services: React.FC = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">
-            Solusi Virtual Server Profesional/span>
+            Solusi Virtual Server Profesional
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-16">
             Layanan VPS dan RDP yang cepat, stabil, dan dapat diandalkan untuk berbagai kebutuhan Anda.
