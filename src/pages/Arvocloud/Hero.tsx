@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
           >
             <Activity className="w-4 h-4 text-blue-600 animate-pulse" />
             <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent font-semibold">
-              Infrastruktur Cloud Handal & Terpercaya
+              Layanan VPS/RDP Handal & Terpercaya
             </span>
           </div>
 
@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
             )}
           >
             <span className="text-foreground">Solusi </span>
-            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+            <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
               VPS & RDP Premium
             </span>
             <br />
