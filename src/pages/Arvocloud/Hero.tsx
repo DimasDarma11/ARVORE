@@ -139,8 +139,8 @@ const Hero: React.FC = () => {
               variant="outline"
               className="text-lg h-14 px-10 rounded-2xl font-semibold border-2 border-blue-500/30 hover:bg-blue-500/10 hover:border-blue-500/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
             >
-              <a href="#services">
-                Lihat Fitur
+              <a href="https://stats.uptimerobot.com/z9kCx5qEsD">
+                Stats Server
                 <Play className="ml-2 w-5 h-5" />
               </a>
             </Button>
