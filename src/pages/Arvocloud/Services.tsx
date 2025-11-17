@@ -30,7 +30,7 @@ const Services: React.FC = () => {
     {
       icon: Server,
       title: "Server VPS",
-      desc: "Server virtual cepat dan stabil dengan akses penuh root — cocok untuk bisnis dan developer.",
+      desc: "Server virtual cepat dan stabil dengan akses penuh root - cocok untuk bisnis dan developer.",
       gradient: "from-blue-500/20 to-blue-600/5",
       borderColor: "border-blue-500/20 hover:border-blue-500/40",
       iconBg: "from-blue-500/20 to-blue-600/10",
@@ -57,7 +57,7 @@ const Services: React.FC = () => {
     {
       icon: Settings,
       title: "Custom Spesifikasi",
-      desc: "Kustomisasi konfigurasi server sesuai kebutuhan proyek Anda, fleksibel dan efisien.",
+      desc: "Kustomisasi spesifikasi server sesuai kebutuhan proyek Anda, fleksibel dan efisien.",
       gradient: "from-blue-500/20 to-blue-400/5",
       borderColor: "border-blue-500/20 hover:border-blue-500/40",
       iconBg: "from-blue-500/20 to-blue-400/10",
@@ -93,11 +93,11 @@ const Services: React.FC = () => {
             <span className="text-blue-500 font-semibold">Layanan Kami</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground">
-            Solusi <span className="bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">Infrastruktur Cloud</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">
+            Solusi Virtual Server Profesional/span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-16">
-            Infrastruktur yang stabil, efisien, dan bisa diandalkan untuk berbagai kebutuhan bisnis Anda.
+            Layanan VPS dan RDP yang cepat, stabil, dan dapat diandalkan untuk berbagai kebutuhan Anda.
           </p>
         </div>
 
