@@ -185,8 +185,8 @@ const Pricing = () => {
             <span className="text-blue-500 font-semibold">Paket Harga Terbaik</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-4">
-            Harga yang <span className="text-blue-500">Transparan</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground text-blue-500 mb-4">
+            Harga yang Transparan</span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
             Pilih paket sesuai kebutuhan Anda. Semua sudah termasuk dukungan 24/7.
