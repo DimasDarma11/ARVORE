@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Star, Quote } from "lucide-react";
 
-const Testimonials: React.FC = () => {
+const Services: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -68,12 +68,12 @@ const Testimonials: React.FC = () => {
 
   return (
     <section
-      id="testimonials"
+      id="services"
       ref={sectionRef}
-      className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-white to-blue-50 dark:from-gray-950 dark:to-blue-950/20"
+      className="relative bg-white dark:bg-gray-950 pt-24 pb-24"
     >
       {/* Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white dark:from-gray-950 to-transparent pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl" />
       </div>
 
