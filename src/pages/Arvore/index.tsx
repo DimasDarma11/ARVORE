@@ -73,7 +73,7 @@ export default function HeroArvore() {
           </h1>
           
           <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
-            Solusi digital terintegrasi untuk bisnis modern
+            Menghadirkan solusi digital yang terintegrasi untuk memenuhi kebutuhan teknologi dan kreativitas masa depan.
           </p>
         </motion.div>
 
@@ -158,3 +158,4 @@ export default function HeroArvore() {
     </div>
   );
 }
+
