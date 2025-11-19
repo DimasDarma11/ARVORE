@@ -1,158 +1,160 @@
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
+import { useState } from "react";
 
 // BrandCard Component
 type BrandCardProps = {
   name: string;
   desc: string;
   path: string;
+  index: number;
 };
 
-const BrandCard = ({ name, desc, path }: BrandCardProps) => (
-  <a
-    href={path}
-    className="group relative bg-white hover:bg-gradient-to-br hover:from-white hover:to-emerald-50 transition-all duration-300 rounded-3xl shadow-xl hover:shadow-2xl p-8 border-2 border-sky-100 hover:border-sky-300 overflow-hidden block"
-  >
-    {/* Accent Corner */}
-    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-200 to-transparent opacity-50 rounded-bl-full transform group-hover:scale-150 transition-transform duration-500"></div>
-    
-    <div className="relative z-10">
-      <h2 className="text-2xl font-bold mb-3 text-slate-800 group-hover:text-emerald-700 transition-colors">{name}</h2>
-      <p className="text-slate-600 text-base leading-relaxed">{desc}</p>
-    </div>
-    
-    {/* Hover Arrow */}
-    <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-      <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </div>
-  </a>
-);
+const BrandCard = ({ name, desc, path, index }: BrandCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.a
+      href={path}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative bg-white transition-all duration-700 rounded-2xl p-10 border border-slate-100 hover:border-blue-200 overflow-hidden block hover:shadow-2xl hover:shadow-blue-500/5"
+      whileHover={{ y: -4 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
+    >
+      {/* Subtle gradient on hover */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-transparent transition-all duration-700`}></div>
+      
+      <div className="relative z-10">
+        <h3 className="text-2xl font-semibold mb-3 text-slate-900 tracking-tight">
+          {name}
+        </h3>
+        <p className="text-slate-600 text-sm leading-relaxed">
+          {desc}
+        </p>
+      </div>
+      
+      {/* Minimal arrow */}
+      <div className={`absolute bottom-10 right-10 transform transition-all duration-500 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'}`}>
+        <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+    </motion.a>
+  );
+};
 
 export default function HeroArvore() {
   return (
-    <>
-      {/* Helmet untuk mengubah title halaman */}
-      <Helmet>
-        <title>ARVORE - Solusi Digital Terintegrasi untuk Masa Depan</title>
-      </Helmet>
-
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-32 px-6 bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50 min-h-screen relative overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute -bottom-20 left-1/2 w-80 h-80 bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{animationDelay: '4s'}}></div>
-        </div>
-
-        {/* Hero Header */}
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white relative">
+      
+      {/* Clean Hero Section */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
+        
+        {/* Minimal Header */}
         <motion.div
-          className="relative z-10 mb-8"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, type: "spring" }}
-        >
-          <h1 className="text-7xl md:text-8xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-sky-600">
-            ARVORE
-          </h1>
-          <div className="h-2 w-32 mx-auto bg-gradient-to-r from-sky-500 to-sky-500 rounded-full"></div>
-        </motion.div>
-
-        {/* Hero Description */}
-        <motion.p
-          className="relative z-10 text-slate-700 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-medium"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          Menghadirkan solusi digital yang terintegrasi untuk memenuhi kebutuhan teknologi dan kreativitas masa depan.
-          <span className="block mt-3 text-lg text-slate-600">Pilih sub-brand di bawah untuk mengenal lebih jauh.</span>
-        </motion.p>
+          <div className="inline-block mb-6">
+            <div className="flex items-center gap-2 text-blue-600 text-sm font-medium tracking-wide">
+              <div className="w-8 h-[1px] bg-blue-600"></div>
+              DIGITAL EXCELLENCE
+            </div>
+          </div>
+          
+          <h1 className="text-7xl md:text-8xl font-bold mb-6 text-slate-900 tracking-tight">
+            ARVORE
+          </h1>
+          
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+            Solusi digital terintegrasi untuk bisnis modern
+          </p>
+        </motion.div>
 
-        {/* Brand Cards Section */}
-        <motion.div
-          className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
+        {/* Clean Brand Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <BrandCard
             name="ArvoCloud"
-            desc="Solusi hosting dengan VPS, RDP, dan Baremetal berkualitas tinggi untuk performa maksimal dan uptime 99.8%."
+            desc="Solusi server VPS, RDP, dan Baremetal berkualitas tinggi untuk performa maksimal dan harga terjangkau."
             path="/arvocloud"
+            index={0}
           />
           <BrandCard
             name="ArvoTech"
             desc="Pengembangan bot, website, dan aplikasi custom yang dirancang untuk memenuhi kebutuhan teknologi bisnis Anda."
             path="/arvotech"
+            index={1}
           />
           <BrandCard
             name="ArvoAgro"
             desc="Distributor kelapa antar pulau dengan pengiriman cepat dan produk berkualitas tinggi untuk keperluan industri."
             path="/arvoagro"
+            index={2}
           />
           <BrandCard
             name="ArvoVisual"
             desc="Layanan desain grafis dan branding profesional, termasuk desain logo, visual marketing, dan AutoCAD."
             path="/arvovisual"
+            index={3}
           />
-        </motion.div>
+        </div>
 
-        {/* Stats Section */}
+        {/* Minimal Stats Bar */}
         <motion.div
-          className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-5xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-        >
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-            <div className="text-4xl font-black text-sky-600 mb-2">4</div>
-            <div className="text-sm text-slate-600 font-medium">Sub-Brand</div>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-            <div className="text-4xl font-black text-sky-600 mb-2">50+</div>
-            <div className="text-sm text-slate-600 font-medium">Proyek Selesai</div>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-            <div className="text-4xl font-black text-sky-600 mb-2">50+</div>
-            <div className="text-sm text-slate-600 font-medium">Klien Puas</div>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 text-center">
-            <div className="text-4xl font-black text-sky-600 mb-2">24/7</div>
-            <div className="text-sm text-slate-600 font-medium">Support</div>
-          </div>
-        </motion.div>
-
-        {/* Trust Badges */}
-        <motion.div
-          className="relative z-10 flex flex-wrap items-center justify-center gap-8 max-w-4xl mx-auto"
+          className="flex items-center justify-center gap-12 py-12 border-y border-slate-100"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <div className="flex items-center gap-2 text-slate-600">
-            <svg className="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="text-sm font-medium">Terpercaya</span>
+          <div className="text-center">
+            <div className="text-3xl font-semibold text-slate-900 mb-1">4</div>
+            <div className="text-xs text-slate-500 uppercase tracking-wider">Brands</div>
           </div>
-          <div className="flex items-center gap-2 text-slate-600">
-            <svg className="w-5 h-5 text-sky-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <span className="text-sm font-medium">Kualitas Terbaik</span>
+          <div className="w-[1px] h-12 bg-slate-200"></div>
+          <div className="text-center">
+            <div className="text-3xl font-semibold text-slate-900 mb-1">50+</div>
+            <div className="text-xs text-slate-500 uppercase tracking-wider">Projects</div>
           </div>
-          <div className="flex items-center gap-2 text-slate-600">
-            <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-            </svg>
-            <span className="text-sm font-medium">Cepat & Efisien</span>
+          <div className="w-[1px] h-12 bg-slate-200"></div>
+          <div className="text-center">
+            <div className="text-3xl font-semibold text-slate-900 mb-1">50+</div>
+            <div className="text-xs text-slate-500 uppercase tracking-wider">Clients</div>
+          </div>
+          <div className="w-[1px] h-12 bg-slate-200"></div>
+          <div className="text-center">
+            <div className="text-3xl font-semibold text-slate-900 mb-1">24/7</div>
+            <div className="text-xs text-slate-500 uppercase tracking-wider">Support</div>
           </div>
         </motion.div>
+
+        {/* Clean Trust Line */}
+        <motion.div
+          className="flex items-center justify-center gap-8 mt-16 text-slate-600 text-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+            <span>Terpercaya</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+            <span>Berkualitas</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+            <span>Profesional</span>
+          </div>
+        </motion.div>
+
       </section>
-    </>
+    </div>
   );
 }
-
