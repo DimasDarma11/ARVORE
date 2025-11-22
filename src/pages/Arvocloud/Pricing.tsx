@@ -227,7 +227,7 @@ const Pricing = () => {
 		icon: Zap, 
 		price: { bulanan: 150000, tahunan: null }, 
 		specs: { cpu: "AMD EPYC", storage: "100 GB SSD NVMe", network: "Port Speed 10 Gbps", IP: "1 IPv4" } },
-	]
+	],
     baremetal: [
       { name: "Bare Metal ID 1", 
 		icon: Zap, 
