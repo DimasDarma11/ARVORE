@@ -149,7 +149,7 @@ const Pricing = () => {
       { name: "1 vCPU 1GB", 
 		icon: Zap, 
 		price: { bulanan: 50000, tahunan: 550000 }, 
-		specs: { cpu: "Intel Xeon E5 V4", storage: "15 GB SSD NVMe", port speed: "Port Speed 1 Gbps", ip: "1 IPv4" } },
+		specs: { cpu: "Intel Xeon E5 V4", storage: "15 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
 		
       { name: "1 vCPU 2GB", 
 		icon: Zap, 
