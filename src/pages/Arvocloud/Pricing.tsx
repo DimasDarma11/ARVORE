@@ -72,10 +72,10 @@ const PricingCard = React.memo(({
       
       <div className="text-center mb-3 pt-1 pb-2">
         <div className="flex items-baseline justify-center gap-1">
-          <span className="text-3xl font-black text-gray-500 dark:text-blue-400">
+          <span className="text-3xl font-black text-gray-700 dark:text-blue-400">
             Rp{plan.price[billingCycle].toLocaleString("id-ID")}
           </span>
-          <span className="text-lg text-gray-500 dark:text-gray-400 font-medium">
+          <span className="text-lg text-gray-700 dark:text-gray-400 font-medium">
           /{billingCycle === "bulanan" ? "bulan" : "tahun"}
           </span>
         </div>
