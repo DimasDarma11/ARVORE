@@ -304,7 +304,6 @@ const Pricing = () => {
   return (
     <section id="pricing" className="relative bg-white dark:bg-gray-950 pt-20 pb-16">
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-slate-500/30 rounded-full blur-3xl" />
       </div>
 
       <div className="relative container mx-auto px-4 max-w-7xl">
