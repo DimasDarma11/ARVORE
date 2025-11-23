@@ -366,7 +366,7 @@ const Pricing = () => {
           </span>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="flex overflow-x-auto gap-4 snap-x snap-mandatory pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-visible">
           {currentPlans.map((plan, i) => (
             <PricingCard 
               key={`${plan.name}-${i}`} 
