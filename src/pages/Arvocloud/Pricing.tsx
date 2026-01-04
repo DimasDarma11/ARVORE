@@ -44,8 +44,10 @@ const PricingCard = React.memo(({
   const IconComponent = plan.icon;
   
   const handleAddToCart = useCallback(() => {
-    onAddToCart(plan, billingCycle);
-  }, [plan, billingCycle, onAddToCart]);
+    if (!isInCart) {
+      onAddToCart(plan, billingCycle);
+    }
+  }, [plan, billingCycle, onAddToCart, isInCart]);
   
   const topSpecs = useMemo(() => {
     const entries = Object.entries(plan.specs);
@@ -357,7 +359,7 @@ const Pricing = () => {
 
       {/* Cart Popup Notification */}
       {showCartPopup && (
-        <div className="fixed top-4 right-4 z-50 cart-popup bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+        <div className="fixed top-4 right-4 z-50 cart-popup bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
           <Check className="w-5 h-5" />
           <span className="font-semibold">Berhasil ditambahkan ke keranjang!</span>
         </div>
@@ -588,15 +590,18 @@ const Pricing = () => {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 pb-24">
-              {filteredAndSortedPlans.map((plan, i) => (
-                <PricingCard 
-                  key={`${plan.name}-${i}`} 
-                  plan={plan} 
-                  billingCycle={billingCycle}
-                  onAddToCart={addToCart}
-                  isInCart={isItemInCart(plan.name, billingCycle)}
-                />
-              ))}
+              {filteredAndSortedPlans.map((plan, i) => {
+                const inCart = isItemInCart(plan.name, billingCycle);
+                return (
+                  <PricingCard 
+                    key={`${selectedCategory}-${plan.name}-${billingCycle}-${inCart}`} 
+                    plan={plan} 
+                    billingCycle={billingCycle}
+                    onAddToCart={addToCart}
+                    isInCart={inCart}
+                  />
+                );
+              })}
             </div>
           )}
         </div>
