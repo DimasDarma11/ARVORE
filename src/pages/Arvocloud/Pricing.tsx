@@ -482,7 +482,7 @@ const Pricing = () => {
           </div>
 
           {/* Category Tabs */}
-          <div className="flex gap-2 mb-4 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-4">
             {categories.map((c) => {
               const IconComp = c.icon;
               return (
@@ -490,77 +490,80 @@ const Pricing = () => {
                   key={c.id}
                   onClick={() => setSelectedCategory(c.id)}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-lg border transition-all font-medium whitespace-nowrap text-sm",
+                    "flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border transition-all font-medium text-sm",
                     selectedCategory === c.id
                       ? "bg-orange-600 text-white border-orange-600"
                       : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-orange-500"
                   )}
                 >
                   <IconComp className="w-4 h-4" />
-                  <span>{c.name}</span>
+                  <span className="truncate">{c.name}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Search and Filter Bar */}
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-4 mb-6 border border-gray-200 dark:border-gray-800">
-            <div className="flex flex-col lg:flex-row gap-3">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-3 md:p-4 mb-6 border border-gray-200 dark:border-gray-800">
+            <div className="space-y-3">
               {/* Search */}
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Cari paket atau spesifikasi..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
+                  className="w-full pl-9 md:pl-10 pr-4 py-2 md:py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
                 />
               </div>
 
-              {/* Sort */}
-              <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value as SortOption)}
-                  className="px-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm min-w-[160px]"
-                >
-                  <option value="default">Urutan Default</option>
-                  <option value="price-low">Harga Terendah</option>
-                  <option value="price-high">Harga Tertinggi</option>
-                  <option value="name">Nama A-Z</option>
-                </select>
-              </div>
+              {/* Sort and Billing Toggle */}
+              <div className="flex gap-2">
+                {/* Sort */}
+                <div className="flex-1 flex items-center gap-2">
+                  <SlidersHorizontal className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <select
+                    value={sortOption}
+                    onChange={(e) => setSortOption(e.target.value as SortOption)}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
+                  >
+                    <option value="default">Default</option>
+                    <option value="price-low">Termurah</option>
+                    <option value="price-high">Termahal</option>
+                    <option value="name">A-Z</option>
+                  </select>
+                </div>
 
-              {/* Billing Toggle */}
-              <div className="flex items-center gap-3 px-4 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg whitespace-nowrap">
-                <span className={cn(
-                  "text-sm font-medium transition-colors",
-                  billingCycle === "bulanan" ? "text-gray-900 dark:text-white" : "text-gray-500"
-                )}>
-                  Bulanan
-                </span>
-                <button
-                  onClick={() => setBillingCycle(billingCycle === "bulanan" ? "tahunan" : "bulanan")}
-                  className={cn(
-                    "relative w-12 h-6 rounded-full transition-all",
-                    billingCycle === "tahunan" ? "bg-orange-600" : "bg-gray-300 dark:bg-gray-700"
-                  )}
-                >
-                  <div
+                {/* Billing Toggle */}
+                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg whitespace-nowrap">
+                  <span className={cn(
+                    "text-xs font-medium transition-colors",
+                    billingCycle === "bulanan" ? "text-gray-900 dark:text-white" : "text-gray-500"
+                  )}>
+                    Bulanan
+                  </span>
+                  <button
+                    onClick={() => setBillingCycle(billingCycle === "bulanan" ? "tahunan" : "bulanan")}
                     className={cn(
-                      "w-5 h-5 rounded-full bg-white shadow transition-transform",
-                      billingCycle === "tahunan" ? "translate-x-6" : "translate-x-0.5"
+                      "relative w-10 h-5 rounded-full transition-all",
+                      billingCycle === "tahunan" ? "bg-orange-600" : "bg-gray-300 dark:bg-gray-700"
                     )}
-                  />
-                </button>
-                <span className={cn(
-                  "text-sm font-medium transition-colors",
-                  billingCycle === "tahunan" ? "text-gray-900 dark:text-white" : "text-gray-500"
-                )}>
-                  Tahunan
-                </span>
+                  >
+                    <div
+                      className={cn(
+                        "w-4 h-4 rounded-full bg-white shadow transition-transform",
+                        billingCycle === "tahunan" ? "translate-x-5" : "translate-x-0.5"
+                      )}
+                    />
+                  </button>
+                  <span className={cn(
+                    "text-xs font-medium transition-colors",
+                    billingCycle === "tahunan" ? "text-gray-900 dark:text-white" : "text-gray-500"
+                  )}>
+                    Tahunan
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -572,7 +575,7 @@ const Pricing = () => {
               <p className="text-gray-500 dark:text-gray-400">Tidak ada paket yang sesuai dengan pencarian Anda</p>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-24">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 pb-24">
               {filteredAndSortedPlans.map((plan, i) => (
                 <PricingCard 
                   key={`${plan.name}-${i}`} 
