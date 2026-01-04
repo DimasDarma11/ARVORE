@@ -51,7 +51,7 @@ const PricingCard = React.memo(({
   
   const topSpecs = useMemo(() => {
     const entries = Object.entries(plan.specs);
-    return entries.slice(0, 3);
+    return entries.slice(0, 5);
   }, [plan.specs]);
 
   const currentPrice = plan.price[billingCycle];
@@ -64,13 +64,13 @@ const PricingCard = React.memo(({
       className={cn(
         "relative rounded-lg p-4 border backdrop-blur-sm transition-all duration-300 bg-white dark:bg-gray-900",
         isPremium || isElite
-          ? "border-orange-300 shadow-lg"
+          ? "border-blue-300 shadow-lg"
           : "border-gray-200 dark:border-gray-800 shadow-sm",
         isHovered ? "shadow-xl" : ""
       )}
     >
       {isPremium && (
-        <div className="absolute -top-2 -left-2 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-br-lg rounded-tl-lg shadow-md">
+        <div className="absolute -top-2 -left-2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-br-lg rounded-tl-lg shadow-md">
           Terlaris
         </div>
       )}
@@ -84,7 +84,7 @@ const PricingCard = React.memo(({
       <div className="mb-3">
         <div className={cn(
           "w-12 h-12 mb-3 rounded-xl flex items-center justify-center",
-          isPremium || isElite ? "bg-gradient-to-br from-orange-500 to-orange-600" : "bg-gray-100 dark:bg-gray-800"
+          isPremium || isElite ? "bg-gradient-to-br from-blue-500 to-blue-600" : "bg-gray-100 dark:bg-gray-800"
         )}>
           <IconComponent className={cn(
             "w-6 h-6",
@@ -99,7 +99,7 @@ const PricingCard = React.memo(({
         {hasPrice ? (
           <>
             <div className="flex items-baseline gap-1 mb-2">
-              <span className="text-2xl font-black text-orange-600 dark:text-orange-500">
+              <span className="text-2xl font-black text-blue-600 dark:text-blue-500">
                 Rp{currentPrice.toLocaleString("id-ID")}
               </span>
               <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -133,7 +133,7 @@ const PricingCard = React.memo(({
         {Object.keys(plan.specs).length > 3 && (
           <button
             onClick={() => setShowDetails(!showDetails)}
-            className="flex items-center gap-1 text-xs text-orange-600 dark:text-orange-500 hover:text-orange-700 font-medium"
+            className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-500 hover:text-blue-700 font-medium"
           >
             {showDetails ? "Lebih sedikit" : `+${Object.keys(plan.specs).length - 3} lainnya`}
           </button>
@@ -157,12 +157,21 @@ const PricingCard = React.memo(({
         className={cn(
           "w-full py-2.5 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-sm",
           hasPrice
-            ? "bg-orange-600 hover:bg-orange-700 text-white hover:shadow-md"
+            ? "bg-blue-600 hover:bg-blue-700 text-white hover:shadow-md"
             : "bg-gray-300 text-gray-500 cursor-not-allowed"
         )}
       >
-        <ShoppingCart className="w-4 h-4" />
-        {hasPrice ? "Masukkan Keranjang" : "Tidak Tersedia"}
+        {isInCart ? (
+          <>
+            <Check className="w-4 h-4" />
+            Sudah di keranjang
+          </>
+          ) : (
+          <>
+            <ShoppingCart className="w-4 h-4" />
+            Masukkan Keranjang
+          </>
+        )}
       </button>
     </div>
   );
@@ -561,7 +570,7 @@ const Pricing = () => {
                     onClick={() => setBillingCycle(billingCycle === "bulanan" ? "tahunan" : "bulanan")}
                     className={cn(
                       "relative w-10 h-5 rounded-full transition-all",
-                      billingCycle === "tahunan" ? "bg-orange-600" : "bg-gray-300 dark:bg-gray-700"
+                      billingCycle === "tahunan" ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-700"
                     )}
                   >
                     <div
