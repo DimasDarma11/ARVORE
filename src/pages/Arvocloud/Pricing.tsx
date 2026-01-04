@@ -14,6 +14,7 @@ interface Plan {
   icon: React.ComponentType<{ className?: string }>;
   price: { bulanan: number; tahunan: number | null };
   specs: PlanSpec;
+  networkType?: "public" | "nat";
 }
 
 interface CartItem extends Plan {
@@ -37,7 +38,6 @@ const PricingCard = React.memo(({
   onAddToCart: (plan: Plan, cycle: "bulanan" | "tahunan") => void;
   isInCart: boolean;
 }) => {
-  const [showDetails, setShowDetails] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const isPremium = plan.icon === Star;
   const isElite = plan.icon === Crown;
@@ -48,11 +48,6 @@ const PricingCard = React.memo(({
       onAddToCart(plan, billingCycle);
     }
   }, [plan, billingCycle, onAddToCart, isInCart]);
-  
-  const topSpecs = useMemo(() => {
-    const entries = Object.entries(plan.specs);
-    return entries.slice(0, 5);
-  }, [plan.specs]);
 
   const currentPrice = plan.price[billingCycle];
   const hasPrice = currentPrice !== null;
@@ -121,7 +116,7 @@ const PricingCard = React.memo(({
       </div>
       
       <div className="space-y-2 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
-        {topSpecs.map(([k, v]) => (
+        {Object.entries(plan.specs).map(([k, v]) => (
           <div key={k} className="flex items-start gap-2 text-xs">
             <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
             <span className="text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -129,26 +124,6 @@ const PricingCard = React.memo(({
             </span>
           </div>
         ))}
-        
-        {Object.keys(plan.specs).length > 3 && (
-          <button
-            onClick={() => setShowDetails(!showDetails)}
-            className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-500 hover:text-blue-700 font-medium"
-          >
-            {showDetails ? "Lebih sedikit" : `+${Object.keys(plan.specs).length - 3} lainnya`}
-          </button>
-        )}
-        
-        {showDetails && (
-          <div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-800 space-y-2">
-            {Object.entries(plan.specs).slice(3).map(([k, v]) => (
-              <div key={k} className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
-                <Check className="w-3.5 h-3.5 text-gray-400 flex-shrink-0 mt-0.5" />
-                <span>{v}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
       
       <button
@@ -180,6 +155,7 @@ const PricingCard = React.memo(({
 // ================= MAIN PRICING COMPONENT =================
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState<"bulanan" | "tahunan">("bulanan");
+  const [networkType, setNetworkType] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<Category>("idn");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("default");
@@ -199,34 +175,34 @@ const Pricing = () => {
 
   const plans = useMemo(() => ({
     idn: [
-      { name: "1 vCPU 1GB", icon: Zap, price: { bulanan: 50000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "15 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
-      { name: "1 vCPU 2GB", icon: Zap, price: { bulanan: 75000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
-      { name: "2 vCPU 4GB", icon: Zap, price: { bulanan: 95000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
-      { name: "4 vCPU 8GB", icon: Star, price: { bulanan: 150000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "40 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
-      { name: "6 vCPU 16GB", icon: Star, price: { bulanan: 260000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "60GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
-      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 265000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "80 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "1 vCPU 1GB", icon: Zap, price: { bulanan: 50000, tahunan: null }, networkType: "public", specs: { cpu: "Intel Xeon E5 V4", storage: "15 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
+      { name: "1 vCPU 2GB", icon: Zap, price: { bulanan: 75000, tahunan: null }, networkType: "public", specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
+      { name: "2 vCPU 4GB", icon: Zap, price: { bulanan: 95000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "4 vCPU 8GB", icon: Star, price: { bulanan: 150000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "40 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "6 vCPU 16GB", icon: Star, price: { bulanan: 260000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "60GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 265000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "80 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
     ],
     usa: [
-      { name: "2 vCPU 1GB", icon: Zap, price: { bulanan: 50000, tahunan: null }, specs: { cpu: "AMD EPYC 7551", storage: "50 GB SSD NVMe", network: "Port Speed 500 Mbps", IP: "1 IPv4" } },
-      { name: "2 vCPU 3.5GB", icon: Zap, price: { bulanan: 100000, tahunan: null }, specs: { cpu: "AMD Ryzen 7 5700G", storage: "60 GB SSD NVMe", network: "Port Speed 500 Mbps", IP: "IP NAT" } },
-      { name: "2 vCPU 4GB", icon: Zap, price: { bulanan: 95000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "IP NAT" } },
-      { name: "4 vCPU 6GB", icon: Zap, price: { bulanan: 135000, tahunan: null }, specs: { cpu: "Intel Xeon E5 Gold 6530", storage: "75 GB SSD NVMe", network: "Port Speed 10 Gbps", IP: "IP NAT" } },
-      { name: "4 vCPU 7GB", icon: Star, price: { bulanan: 185000, tahunan: null }, specs: { cpu: "AMD Ryzen 7 5700G", storage: "120 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "1 IPv4" } },
-      { name: "4 vCPU 8GB", icon: Crown, price: { bulanan: 150000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "40 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "IP NAT" } },
-      { name: "6 vCPU 16GB", icon: Crown, price: { bulanan: 260000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "60 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "IP NAT" } },
-      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 230000, tahunan: null }, specs: { cpu: "Intel / AMD EPYC Processor", storage: "160 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "1 IPv4" } },
-      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 275000, tahunan: null }, specs: { cpu: "Intel Xeon E5 V4", storage: "80 GB SSD NVMe", network: "Port Speed 1 Gbps", IP: "IP NAT" } },
+      { name: "2 vCPU 1GB", icon: Zap, price: { bulanan: 50000, tahunan: null }, networkType: "nat", specs: { cpu: "AMD EPYC 7551", storage: "50 GB SSD NVMe", network: "Port Speed 500 Mbps", ip: "1 IPv4" } },
+      { name: "2 vCPU 3.5GB", icon: Zap, price: { bulanan: 100000, tahunan: null }, networkType: "nat", specs: { cpu: "AMD Ryzen 7 5700G", storage: "60 GB SSD NVMe", network: "Port Speed 500 Mbps", ip: "IP NAT" } },
+      { name: "2 vCPU 4GB", icon: Zap, price: { bulanan: 95000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "20 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "4 vCPU 6GB", icon: Zap, price: { bulanan: 135000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 Gold 6530", storage: "75 GB SSD NVMe", network: "Port Speed 10 Gbps", ip: "IP NAT" } },
+      { name: "4 vCPU 7GB", icon: Star, price: { bulanan: 185000, tahunan: null }, networkType: "nat", specs: { cpu: "AMD Ryzen 7 5700G", storage: "120 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
+      { name: "4 vCPU 8GB", icon: Crown, price: { bulanan: 150000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "40 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "6 vCPU 16GB", icon: Crown, price: { bulanan: 260000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "60 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
+      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 230000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel / AMD EPYC Processor", storage: "160 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "1 IPv4" } },
+      { name: "8 vCPU 16GB", icon: Crown, price: { bulanan: 275000, tahunan: null }, networkType: "nat", specs: { cpu: "Intel Xeon E5 V4", storage: "80 GB SSD NVMe", network: "Port Speed 1 Gbps", ip: "IP NAT" } },
     ],
     sg: [
-      { name: "4 vCPU 6GB", icon: Zap, price: { bulanan: 150000, tahunan: null }, specs: { cpu: "AMD EPYC", storage: "100 GB SSD NVMe", network: "Port Speed 10 Gbps", IP: "1 IPv4" } },
+      { name: "4 vCPU 6GB", icon: Zap, price: { bulanan: 150000, tahunan: null }, networkType: "public", specs: { cpu: "AMD EPYC", storage: "100 GB SSD NVMe", network: "Port Speed 10 Gbps", ip: "1 IPv4" } },
     ],
     baremetal: [
-      { name: "Bare Metal ID 1", icon: Zap, price: { bulanan: 350000, tahunan: 3850000 }, specs: { cpu: "Intel Core i3 Gen 6", ram: "8 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
-      { name: "Bare Metal ID 2", icon: Star, price: { bulanan: 400000, tahunan: 4400000 }, specs: { cpu: "Intel Core i3 Gen 6", ram: "16 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
-      { name: "Bare Metal ID 3", icon: Crown, price: { bulanan: 450000, tahunan: 4950000 }, specs: { cpu: "Intel Core i3 Gen 6", ram: "24 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
-      { name: "Bare Metal ID 4", icon: Crown, price: { bulanan: 550000, tahunan: 6050000 }, specs: { cpu: "Intel Core i3 Gen 6", ram: "32 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
-      { name: "Bare Metal ID 5", icon: Star, price: { bulanan: 750000, tahunan: 8250000 }, specs: { cpu: "Intel Core i7 Gen 4", ram: "32 GB RAM", storage: "512 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
-      { name: "Bare Metal USA", icon: Star, price: { bulanan: 1500000, tahunan: 16500000 }, specs: { cpu: "AMD Ryzen 7 5700G", ram: "64 GB RAM", storage: "1 TB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal ID 1", icon: Zap, price: { bulanan: 350000, tahunan: 3850000 }, networkType: "nat", specs: { cpu: "Intel Core i3 Gen 6", ram: "8 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal ID 2", icon: Star, price: { bulanan: 400000, tahunan: 4400000 }, networkType: "nat", specs: { cpu: "Intel Core i3 Gen 6", ram: "16 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal ID 3", icon: Crown, price: { bulanan: 450000, tahunan: 4950000 }, networkType: "nat", specs: { cpu: "Intel Core i3 Gen 6", ram: "24 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal ID 4", icon: Crown, price: { bulanan: 550000, tahunan: 6050000 }, networkType: "nat", specs: { cpu: "Intel Core i3 Gen 6", ram: "32 GB RAM", storage: "256 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal ID 5", icon: Star, price: { bulanan: 750000, tahunan: 8250000 }, networkType: "nat", specs: { cpu: "Intel Core i7 Gen 4", ram: "32 GB RAM", storage: "512 GB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
+      { name: "Bare Metal USA", icon: Star, price: { bulanan: 1500000, tahunan: 16500000 }, networkType: "public", specs: { cpu: "AMD Ryzen 7 5700G", ram: "64 GB RAM", storage: "1 TB SSD", network: "Port Speed 1 Gbps", emulator: "Support emulator & game" } },
     ],
     proxy: [
       { name: "Proxy Rotating IP", icon: Zap, price: { bulanan: 45000, tahunan: 540000 }, specs: { Bandwidth: "1GB", Rotasi: "1-120 Menit" } },
@@ -238,12 +214,16 @@ const Pricing = () => {
 
   // Filter dan Sort
   const filteredAndSortedPlans = useMemo(() => {
-    let filtered = currentPlans.filter(plan => 
-      plan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      Object.values(plan.specs).some(spec => 
-        spec.toLowerCase().includes(searchQuery.toLowerCase())
+    let filtered = currentPlans
+      .filter(plan =>
+        plan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        Object.values(plan.specs).some(spec =>
+          spec.toLowerCase().includes(searchQuery.toLowerCase())
+        )
       )
-    );
+      .filter(plan =>
+         networkType ? plan.networkType === networkType : true
+      );
 
     if (sortOption === "price-low") {
       filtered = [...filtered].sort((a, b) => {
@@ -556,7 +536,18 @@ const Pricing = () => {
                     <option value="price-high">Termahal</option>
                     <option value="name">A-Z</option>
                   </select>
+
+                  <select
+                    className="border rounded-lg px-3 py-2"
+                    value={networkType}
+                    onChange={e => setNetworkType(e.target.value)}
+                  >
+                    <option value="">Semua Network</option>
+                    <option value="public">Public IP</option>
+                    <option value="nat">NAT</option>
+                  </select>
                 </div>
+
 
                 {/* Billing Toggle */}
                 <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 dark:bg-gray-800 rounded-lg whitespace-nowrap">
