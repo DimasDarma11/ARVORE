@@ -29,11 +29,13 @@ type SortOption = "default" | "price-low" | "price-high" | "name";
 const PricingCard = React.memo(({ 
   plan, 
   billingCycle, 
-  onAddToCart 
+  onAddToCart,
+  isInCart
 }: { 
   plan: Plan; 
   billingCycle: "bulanan" | "tahunan";
   onAddToCart: (plan: Plan, cycle: "bulanan" | "tahunan") => void;
+  isInCart: boolean;
 }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -278,6 +280,16 @@ const Pricing = () => {
     setTimeout(() => setShowCartPopup(false), 2000);
   }, [selectedCategory, categories]);
 
+  // Check if item is in cart
+  const isItemInCart = useCallback((planName: string, cycle: "bulanan" | "tahunan") => {
+    const categoryName = categories.find(c => c.id === selectedCategory)?.name || selectedCategory;
+    return cart.some(item => 
+      item.name === planName && 
+      item.selectedCycle === cycle &&
+      item.category === categoryName
+    );
+  }, [cart, selectedCategory, categories]);
+
   const updateQuantity = useCallback((index: number, newQuantity: number) => {
     if (newQuantity === 0) {
       setCart(prev => prev.filter((_, i) => i !== index));
@@ -354,7 +366,7 @@ const Pricing = () => {
       {/* Floating Cart Button */}
       <button
         onClick={() => setShowCart(true)}
-        className="fixed bottom-6 right-6 z-40 bg-orange-600 hover:bg-orange-700 text-white rounded-full p-4 shadow-2xl transition-all hover:scale-110"
+        className="fixed bottom-6 right-6 z-40 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-2xl transition-all hover:scale-110"
       >
         <ShoppingCart className="w-6 h-6" />
         {cartItemCount > 0 && (
@@ -433,7 +445,7 @@ const Pricing = () => {
                           </div>
                           
                           <div className="text-right">
-                            <p className="text-sm font-bold text-orange-600 dark:text-orange-500">
+                            <p className="text-sm font-bold text-blue-600 dark:text-blue-500">
                               Rp{((item.price[item.selectedCycle] || 0) * item.quantity).toLocaleString("id-ID")}
                             </p>
                           </div>
@@ -445,14 +457,14 @@ const Pricing = () => {
                   <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mb-4 sticky bottom-0 bg-white dark:bg-gray-900">
                     <div className="flex justify-between items-center mb-4">
                       <span className="font-semibold text-gray-700 dark:text-gray-300">Total</span>
-                      <span className="text-2xl font-black text-orange-600 dark:text-orange-500">
+                      <span className="text-2xl font-black text-blue-600 dark:text-blue-500">
                         Rp{cartTotal.toLocaleString("id-ID")}
                       </span>
                     </div>
 
                     <button
                       onClick={handleCheckout}
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
                     >
                       <ShoppingCart className="w-5 h-5" />
                       Checkout via WhatsApp
@@ -471,7 +483,7 @@ const Pricing = () => {
           <div className="mb-6">
             <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-2">
               Pilih Paket{" "}
-              <span className="text-orange-600 dark:text-orange-500">
+              <span className="text-blue-600 dark:text-blue-500">
                 Terbaik
               </span>
               {" "}Anda
@@ -492,8 +504,8 @@ const Pricing = () => {
                   className={cn(
                     "flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border transition-all font-medium text-sm",
                     selectedCategory === c.id
-                      ? "bg-orange-600 text-white border-orange-600"
-                      : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-orange-500"
+                      ? "bg-blue-600 text-white border-blue-600"
+                      : "bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-blue-500"
                   )}
                 >
                   <IconComp className="w-4 h-4" />
@@ -514,7 +526,7 @@ const Pricing = () => {
                   placeholder="Cari paket atau spesifikasi..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 md:pl-10 pr-4 py-2 md:py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
+                  className="w-full pl-9 md:pl-10 pr-4 py-2 md:py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
                 />
               </div>
 
@@ -526,7 +538,7 @@ const Pricing = () => {
                   <select
                     value={sortOption}
                     onChange={(e) => setSortOption(e.target.value as SortOption)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm"
                   >
                     <option value="default">Default</option>
                     <option value="price-low">Termurah</option>
@@ -582,6 +594,7 @@ const Pricing = () => {
                   plan={plan} 
                   billingCycle={billingCycle}
                   onAddToCart={addToCart}
+                  isInCart={isItemInCart(plan.name, billingCycle)}
                 />
               ))}
             </div>
